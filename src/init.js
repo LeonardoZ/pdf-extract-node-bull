@@ -1,3 +1,9 @@
 const producer = require('./producer');
 
-producer.start();
+(async () => {
+  try {
+    await producer();
+  } catch (error) {
+    console.log(error);
+  }
+})(); // will be watching folder
