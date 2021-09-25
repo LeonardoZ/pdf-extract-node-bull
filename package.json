@@ -13,6 +13,7 @@
     "bull": "^3.29.2",
     "knex": "^0.95.11",
     "mysql": "^2.18.1",
+    "node-cron": "^3.0.0",
     "nodemon": "^2.0.13",
     "pdf-text-extract": "^1.5.0"
   }
