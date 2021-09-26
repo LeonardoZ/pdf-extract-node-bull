@@ -10,6 +10,7 @@ const config = {
     },
   },
 };
+
 const pdfQueue = new Queue('pdf-to-parse', config)
   .on('error', function (error) {
     console.error(`Error in bull queue happend: ${error}`);
