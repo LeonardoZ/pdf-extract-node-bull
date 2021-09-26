@@ -4,7 +4,7 @@ const fs = require('fs');
 const { getPkgJsonDir } = require('./base');
 const path = require('path');
 
-module.exports = async (job) => {
+module.exports = async (job, done) => {
   console.log(`Processing ${job.id}`);
 
   var options = {
@@ -12,8 +12,7 @@ module.exports = async (job) => {
   };
   extract(job.data.path, options, async function (err, pages) {
     if (err) {
-      console.log(err);
-      return;
+      return done(err);
     }
     const basePath = await getPkgJsonDir();
     const baseName = path.basename(job.data.path);
@@ -32,18 +31,17 @@ module.exports = async (job) => {
       'utf8',
       async function (err) {
         if (err) {
-          console.log(err);
-          return;
+          return done(err);
         }
         await fs.rename(
           job.data.path,
           `${basePath}/processed/${baseName}`,
           function (err) {
             if (err) {
-              console.log(err);
-              return;
+              return done(err);
             }
             console.log('Successfully renamed - AKA moved!');
+            done();
           }
         );
       }

@@ -18,6 +18,7 @@
   "author": "Leonardo Zapparoli",
   "license": "ISC",
   "dependencies": {
+    "@bull-board/express": "^3.5.5",
     "bull": "^3.29.2",
     "chokidar": "^3.5.2",
     "knex": "^0.95.11",
