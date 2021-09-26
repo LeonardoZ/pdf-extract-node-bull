@@ -7,14 +7,25 @@
     "start": "nodemon src/init.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "input/*",
+      "output/*",
+      "processed/*",
+      "dbdata/*"
+    ]
+  },
   "author": "Leonardo Zapparoli",
   "license": "ISC",
   "dependencies": {
     "bull": "^3.29.2",
+    "chokidar": "^3.5.2",
     "knex": "^0.95.11",
     "mysql": "^2.18.1",
     "node-cron": "^3.0.0",
     "nodemon": "^2.0.13",
-    "pdf-text-extract": "^1.5.0"
+    "pdf-text-extract": "^1.5.0",
+    "pdfjs-dist": "^2.9.359",
+    "uuid": "^8.3.2"
   }
 }

@@ -119,3 +119,13 @@ dist
 
 dbdata/*
 !dbdata/.gitkeep
+
+input/*
+!input/.gitkeep
+
+output/*
+!output/.gitkeep
+
+
+processed/*
+!processed/.gitkeep
