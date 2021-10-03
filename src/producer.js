@@ -13,13 +13,10 @@ module.exports = async () => {
 
     watcher.on('add', async function (path) {
       if (path && path.endsWith('.pdf')) {
-        await pdfQueue.add(
-          {
-            path,
-            at: new Date(),
-          },
-          { jobid: 'add-pdf', timeout: 1000 }
-        );
+        await pdfQueue.sendToQueue({
+          path,
+          at: new Date(),
+        });
         console.log('File', path, 'has been added');
       }
     });

@@ -10,6 +10,8 @@ services:
     ports:
       - 3001:3001
     command: npm start
+    networks:
+      - rabbitmq_nodejs
 
   database:
     image: mariadb:10.3
@@ -23,7 +25,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: pdf-extraction-db
-
+    networks:
+      - rabbitmq_nodejs
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     container_name: 'rabbitmq'
@@ -33,6 +36,8 @@ services:
     volumes:
       - ~/mqdata/data/:/var/lib/rabbitmq/
       - ~/mqdata/log/:/var/log/rabbitmq
+      - ~/mqdata/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - ~/mqdata/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
     networks:
       - rabbitmq_nodejs
 networks:
