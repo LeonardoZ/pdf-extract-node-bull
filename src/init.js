@@ -1,11 +1,11 @@
 const producer = require('./producer');
 const { getPkgJsonDir } = require('./base');
-const queue = require('./queue');
+const consumer = require('./consumer');
 
 (async () => {
   try {
     await producer();
-    const base = await getPkgJsonDir();
+    await consumer();
   } catch (error) {
     console.log(error);
   }
